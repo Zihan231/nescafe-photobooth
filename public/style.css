@@ -48,17 +48,33 @@ button:disabled { opacity: .4; cursor: default; transform: none; }
 .btn.ghost, button.ghost { background: transparent; color: var(--ink); border: 1px solid rgba(255, 255, 255, .5); }
 .btn.accent, button.accent { background: var(--accent); color: #fff; }
 
-/* Photo frame used on display + view pages */
+/* Photo frame used on display + view pages: Nescafe red with a cream mat, gold keyline and logo footer */
 .frame {
-  position: relative; padding: 12px 12px 52px; border-radius: 6px;
-  /* same red as the admin panels */
-  background: linear-gradient(160deg, #e3202b 0%, #b3121b 100%);
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .7);
+  position: relative; padding: 16px 16px 84px; border-radius: 10px;
+  background:
+    radial-gradient(120% 80% at 20% 0%, rgba(255, 255, 255, .18) 0%, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(160deg, #e3202b 0%, #b3121b 60%, #8f0d15 100%);
+  box-shadow:
+    0 0 0 1px rgba(255, 214, 140, .55),
+    0 0 0 5px rgba(0, 0, 0, .25),
+    0 30px 60px -20px rgba(0, 0, 0, .8),
+    inset 0 1px 0 rgba(255, 255, 255, .35);
 }
-.frame img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.frame::before {
+  content: ""; position: absolute; inset: 6px; border-radius: 6px; pointer-events: none;
+  border: 1px solid rgba(255, 214, 140, .6);
+}
+.frame img {
+  display: block; width: 100%; height: auto; border-radius: 3px;
+  border: 6px solid var(--cream); box-shadow: 0 4px 14px rgba(0, 0, 0, .35), inset 0 0 0 1px rgba(0, 0, 0, .15);
+}
+.frame::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 38px; height: 26px;
+  background: url("/static/logo.png") center / contain no-repeat;
+}
 .frame .caption {
   position: absolute; left: 0; right: 0; bottom: 16px; text-align: center;
-  font-weight: 300; letter-spacing: .12em; text-transform: uppercase; font-size: .75rem; color: rgba(255, 255, 255, .9);
+  font-weight: 400; letter-spacing: .22em; text-transform: uppercase; font-size: .62rem; color: rgba(255, 233, 190, .95);
 }
 /* MomentX logo: gold-to-orange wordmark */
 .brand {
