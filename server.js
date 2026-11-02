@@ -152,7 +152,7 @@ const app = express();
 app.set('trust proxy', true); // so req.protocol is https behind Render's proxy
 app.use(express.json({ limit: '1kb' }));
 app.use('/uploads', express.static(UPLOAD_DIR, { maxAge: '7d' }));
-app.use('/static', express.static(path.join(__dirname, 'public')));
+app.use('/static', express.static(path.join(__dirname, 'public'), { maxAge: 0, etag: true }));
 
 // Pages
 app.get('/', (req, res) => res.redirect('/admin'));
