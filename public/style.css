@@ -1,0 +1,70 @@
+:root {
+  --bg: #1b1b1b;
+  --ink: #ffffff;
+  --muted: #b3b3b3;
+  --accent: #e0592f;
+  --accent-2: #8a3a28;
+  --card: #232323;
+  --line: #333333;
+  --glow: rgba(176, 66, 40, 1);
+  --cream: #f4ead7;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+  font-weight: 300;
+  color: var(--ink);
+  background-color: var(--bg);
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-text-size-adjust: 100%;
+}
+/* Fixed layer instead of background-attachment: fixed, which iOS Safari renders zoomed-in */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1;
+  background:
+    linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
+    url("/static/earth.webp") center bottom / cover no-repeat;
+}
+img { max-width: 100%; }
+@font-face {
+  font-family: "Better Times";
+  src: url("/static/fonts/BetterTimes.otf") format("opentype");
+  font-display: swap;
+}
+/* Brush script for headings only; small text stays in Poppins for legibility */
+h1, h2, .display-font { font-family: "Better Times", "Poppins", cursive; font-weight: 400; letter-spacing: 0; line-height: 1.2; }
+p { line-height: 1.6; }
+a { color: var(--accent); }
+button, .btn {
+  font: inherit; font-weight: 500; cursor: pointer; border: 0; border-radius: 999px;
+  padding: .75rem 1.4rem; background: var(--ink); color: var(--bg); text-decoration: none;
+  display: inline-flex; align-items: center; gap: .5rem; transition: transform .15s, opacity .15s, background .15s;
+}
+@media (hover: hover) { button:hover, .btn:hover { transform: translateY(-1px); } }
+button, .btn { min-height: 44px; justify-content: center; } /* comfortable touch target */
+button:disabled { opacity: .4; cursor: default; transform: none; }
+.btn.ghost, button.ghost { background: transparent; color: var(--ink); border: 1px solid rgba(255, 255, 255, .5); }
+.btn.accent, button.accent { background: var(--accent); color: #fff; }
+
+/* Photo frame used on display + view pages */
+.frame {
+  position: relative; padding: 12px 12px 52px; border-radius: 6px;
+  /* same red as the admin panels */
+  background: linear-gradient(160deg, #e3202b 0%, #b3121b 100%);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, .7);
+}
+.frame img { display: block; width: 100%; height: auto; border-radius: 3px; }
+.frame .caption {
+  position: absolute; left: 0; right: 0; bottom: 16px; text-align: center;
+  font-weight: 300; letter-spacing: .12em; text-transform: uppercase; font-size: .75rem; color: rgba(255, 255, 255, .9);
+}
+/* MomentX logo: gold-to-orange wordmark */
+.brand {
+  display: inline-block;
+  font-weight: 800; letter-spacing: -.01em;
+  background: linear-gradient(180deg, #ffc94a 0%, #f5a623 55%, #e07b1f 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.corner-flourish { color: var(--accent); opacity: .8; }
